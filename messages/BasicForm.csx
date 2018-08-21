@@ -1,21 +1,24 @@
 using System;
 using Microsoft.Bot.Builder.FormFlow;
 
-public enum CarOptions { Convertible = 1, SUV, EV };
-public enum ColorOptions { Red = 1, White, Blue };
+public enum TrainedRole { Guerlilla = 1, Crusher, Scav };
+public enum FavouriteStyle { Close = 1, Mid, Long };
 
 // For more information about this template visit http://aka.ms/azurebots-csharp-form
 [Serializable]
 public class BasicForm
 {
-    [Prompt("Hi! What is your {&}?")]
+    [Prompt("Hi! What is {&} of your character?")]
     public string Name { get; set; }
 
-    [Prompt("Please select your favorite car type {||}")]
-    public CarOptions Car { get; set; }
+    [Prompt("..and a {&}?")]
+    public string Nickname { get; set; }
 
-    [Prompt("Please select your favorite {&} {||}")]
-    public ColorOptions Color { get; set; }
+    [Prompt("Please select your trained role {||}")]
+    public TrainedRole Role { get; set; }
+
+    [Prompt("Please select your favorite {&} style of fight {||}")]
+    public FavouriteStyle FavouriteStyle { get; set; }
 
     public static IForm<BasicForm> BuildForm()
     {
